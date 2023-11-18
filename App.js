@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 import { GameEngine } from 'react-native-game-engine';
-import entities from './entities';
+import entities from './entities'
+import Physics from './Physics';
 
 export default function App() {
   return (
     <View style={{flex: 1}}>
       <GameEngine
+        systems={[Physics]}
         entities={entities()}
         style={{
           position:'absolute',
@@ -17,7 +19,7 @@ export default function App() {
       >
       </GameEngine>
 
-      <StatusBar style="auto" hidde={true}/>
+      <StatusBar style="auto" hidden={true}/>
     </View>
   );
 }
