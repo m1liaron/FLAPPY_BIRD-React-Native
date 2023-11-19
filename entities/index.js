@@ -22,14 +22,14 @@ export default restart => {
     return {
         physics: { engine, world },
         
-        Bird: Bird(world, 'green', {x: 50, y:300}, {height: 40, width: 40}),
+        Bird: Bird(world, 'green', {x: 50, y:300}, {height: 64, width: 112}),
         
-        ObstacleTop1: Obstacle(world, 'ObstacleTop1','red',pipeSizePosA.pipeTop.pos, pipeSizePosA.pipeTop.size),
-        ObstacleBottom1: Obstacle(world, 'ObstacleBottom1', 'blue', pipeSizePosA.pipeBottom.pos, pipeSizePosA.pipeBottom.size),
+        ObstacleTop1: Obstacle(world, 'ObstacleTop1','red',pipeSizePosA.pipeTop.pos, pipeSizePosA.pipeTop.size, 'Bottom'),
+        ObstacleBottom1: Obstacle(world, 'ObstacleBottom1', 'blue', pipeSizePosA.pipeBottom.pos, pipeSizePosA.pipeBottom.size, 'Bottom'),
 
-        ObstacleTop2: Obstacle(world, 'ObstacleTop2','red',pipeSizePosB.pipeTop.pos, pipeSizePosB.pipeTop.size),
-        ObstacleBottom2: Obstacle(world, 'ObstacleBottom2', 'blue', pipeSizePosB.pipeBottom.pos, pipeSizePosB.pipeBottom.size),
+        ObstacleTop2: Obstacle(world, 'ObstacleTop2','red',pipeSizePosB.pipeTop.pos, pipeSizePosB.pipeTop.size, 'Top'),
+        ObstacleBottom2: Obstacle(world, 'ObstacleBottom2', 'blue', pipeSizePosB.pipeBottom.pos, pipeSizePosB.pipeBottom.size, 'Bottom'),
         
-        Floor: Floor(world, 'green', {x: windowWidth / 2, y: windowHeight}, {height: 50, width: windowWidth})
+        Floor: Floor(world, 'yellow', {x: windowWidth / 2, y: windowHeight - 80}, {height: 50, width: windowWidth})
     }
 }

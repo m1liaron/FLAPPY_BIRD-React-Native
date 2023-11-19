@@ -1,7 +1,7 @@
 import Matter from "matter-js";
 import React from 'react'
-import { View } from 'react-native';
-
+import { View, ImageBackground, Image } from 'react-native';
+import pillar from '../images/pillar.png'
 
 const Obstacle = props => {
     const widthBody = props.body.bounds.max.x - props.body.bounds.min.x
@@ -13,16 +13,20 @@ const Obstacle = props => {
     const color = props.color;
 
     return (
-        <View style={{
-            borderWidth: 1,
-            borderColor: color,
-            borderStyle: 'solid',
-            position:'absolute',
-            left:xBody,
-            top: yBody,
-            width: widthBody,
-            height: heightBody
-        }}/>
+        <ImageBackground
+            source={pillar}
+            style={{
+                borderWidth: 1,
+                borderColor: color,
+                borderStyle: 'solid',
+                position: 'absolute',
+                left: xBody,
+                top: yBody,
+                width: widthBody,
+                height: heightBody,
+            }}
+        >
+        </ImageBackground>
     )
 }
 

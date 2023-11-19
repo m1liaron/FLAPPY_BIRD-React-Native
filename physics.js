@@ -14,7 +14,7 @@ const Physics = (entities, {touches, time, dispatch}) => {
     .forEach(t => {
         Matter.Body.setVelocity(entities.Bird.body, {
             x: 0, 
-            y: -8
+            y: -5
         })
     });
     
@@ -26,6 +26,17 @@ const Physics = (entities, {touches, time, dispatch}) => {
             entities[`ObstacleTop${index}`].point = true;
             dispatch({type: 'new_point'}) 
         }
+
+        Matter.Events.on(engine, 'collisionStart', (event) => {
+          event.pairs.forEach((collision) => {
+            if (
+              collision.bodyA.label === 'Bird' ||
+              collision.bodyB.label === 'Bird'
+            ) {
+              dispatch({ type: 'game_over' });
+            }
+          });
+        });
 
 
         if(entities[`ObstacleTop${index}`].body.bounds.max.x <= 0){
@@ -40,8 +51,15 @@ const Physics = (entities, {touches, time, dispatch}) => {
     }
 
     Matter.Events.on(engine, 'collisionStart', (event) => {
-        dispatch({ type: 'game_over' })
-    })
+      event.pairs.forEach((collision) => {
+        if (
+          collision.bodyA.label === 'Bird' ||
+          collision.bodyB.label === 'Bird'
+        ) {
+          dispatch({ type: 'game_over' });
+        }
+      });
+    });
     return entities;
 }
 

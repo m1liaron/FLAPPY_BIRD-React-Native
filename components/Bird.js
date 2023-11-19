@@ -1,7 +1,8 @@
 import Matter from "matter-js";
-import React from 'react'
-import { View } from 'react-native';
-
+import React, { useState } from 'react'
+import { View, Image, ImageBackground } from 'react-native';
+import bird from '../images/дрон.gif'
+import gameOverImage from '../images/boom.gif';
 
 const Bird = props => {
     const widthBody = props.body.bounds.max.x - props.body.bounds.min.x
@@ -12,16 +13,19 @@ const Bird = props => {
 
     const color = props.color;
 
+
     return (
-        <View style={{
-            borderWidth: 1,
-            borderColor: color,
+        <ImageBackground
+        source={bird}
+        style={{
+            // borderWidth: 1,
+            // borderColor: color,
             borderStyle: 'solid',
-            position:'absolute',
-            left:xBody,
+            position: 'absolute',
+            left: xBody,
             top: yBody,
             width: widthBody,
-            height: heightBody
+            height: heightBody,
         }}/>
     )
 }
